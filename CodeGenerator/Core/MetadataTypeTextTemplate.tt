@@ -1,0 +1,21 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="CodeGenerator.DTO"#>
+<#@ parameter type="CodeGenerator.DTO.ClassInfo" name="classinfo" #>
+
+
+public class <#= classinfo.ClassName#>
+{
+<#
+foreach(PropertyInfo property in classinfo.Properties)
+{
+#>
+	[PropertyLog()]	
+   public <#= property.Type#> <#= property.Name#> {get; set;}
+<#
+}
+#>
+}
